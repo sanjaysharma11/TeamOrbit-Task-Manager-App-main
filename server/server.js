@@ -16,34 +16,19 @@ const { createMessage } = require("./controllers/messageController");
 const app = express();
 const server = http.createServer(app);
 
-// Parse CLIENT_URL as an array
-const allowedOrigins = process.env.CLIENT_URL
-  ? process.env.CLIENT_URL.split(",")
-  : ["*"];
-
 // Socket.IO Setup
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
-    credentials: true
+    origin: process.env.CLIENT_URL || "*",
+    methods: ["GET", "POST"]
   }
 });
 
 // Middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      return callback(null, true);
-    } else {
-      return callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: process.env.CLIENT_URL || "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
 }));
 
 app.use(express.json());
@@ -81,10 +66,9 @@ io.on("connection", (socket) => {
   socket.on("send_message", async ({ from, to, text }) => {
     try {
       const message = await createMessage({ from, to, text });
-      // Optionally emit the message to the recipient
-      socket.to(to).emit("receive_message", message);
+      if (message) io.emit("receive_message", message);
     } catch (error) {
-      console.error("Error sending message:", error);
+      io.emit("error_sending_message", error);
     }
   });
 
@@ -93,8 +77,8 @@ io.on("connection", (socket) => {
   });
 });
 
-// Start the server
+// Server startup
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port: ${PORT}`);
 });
