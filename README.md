@@ -2,6 +2,12 @@
 
 A full-stack **TeamOrbit-Task Management System** built using the MERN stack. This application allows users to create, read, update, and delete tasks with a clean and responsive interface.
 
+---
+
+## 📁 Project Structure
+
+![Struktur folder MERN proyek](https://github.com/user-attachments/assets/8c625713-6f6e-4742-9009-a79d2b834170)
+
 
 ---
 
@@ -32,6 +38,12 @@ A full-stack **TeamOrbit-Task Management System** built using the MERN stack. Th
 ---
 
 ## 📦 Getting Started
+
+ 📁 Clone the Repository
+
+```bash
+git clone https://github.com/smitmorjariya/Task-Manager.git
+```
 
  cd backend
 
@@ -73,3 +85,13 @@ npm run dev
 | PUT    | /api/tasks/:id     | Update a task        |
 | DELETE | /api/tasks/:id     | Delete a task        |
 
+
+## 🧑‍💻 Author
+
+Morjariya Smit N.
+
+Final Year B.E. CSE | MERN Stack Developer
+
+🔗 [LinkedIn](https://www.linkedin.com/in/smit-morjariya021/) 
+
+💻 [GitHub](https://github.com/smitmorjariya)
