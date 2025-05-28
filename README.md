@@ -42,7 +42,7 @@ A full-stack **TeamOrbit-Task Management System** built using the MERN stack. Th
  📁 Clone the Repository
 
 ```bash
-git clone https://github.com/smitmorjariya/Task-Manager.git
+git clone https://github.com/sanjaysharma11/TeamOrbit-Task-Manager-App-main
 ```
 
  cd backend
@@ -92,6 +92,6 @@ Morjariya Smit N.
 
 Final Year B.E. CSE | MERN Stack Developer
 
-🔗 [LinkedIn](https://www.linkedin.com/in/smit-morjariya021/) 
+🔗 [LinkedIn](https://www.linkedin.com/in/sanjay-kumar-sharma121) 
 
-💻 [GitHub](https://github.com/smitmorjariya)
+💻 [GitHub](https://github.com/sanjaysharma11)
